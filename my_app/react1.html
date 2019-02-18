@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<meta charset="utf-8">
+<title></title>
+</head>
+<body>
+<div id="app">
+	<h1>My name is : {this.state.name} and my age is {this.state.age}</h1>
+	<form onSubmit=(this.handleSubmit)>
+		<input type='text' onChange=(this.handleChange)></input>
+		<button>Submit</button>
+	</form>
+</div>
+<script type="text/babel">
+	class App extends React.Component{
+	state = { name: 'Sheffil',
+              age: 27
+            }
+            handleChange= (e) =>{
+            this.setState(
+              {
+              	name: e.target.value
+              }
+            )
+        }
+            handleClick= (e) =>  {
+            this.setState(
+                 {
+	               name: 'john',
+	               age: 26
+                 }
+            );
+            console.log(this.state.name);
+        }
+        handleMouseOver(e)
+        {
+        	console.log(e.target, e.pageX, e.pageY);
+        }
+        handleCopy(e) {
+        	window.alert('think Original');
+        }
+        
+		render() {
+			return ( 
+			<div>
+
+				<h1> {this.state.name}  </h1>
+				<h3>My is: { this.state.age }</h3>
+			<button onClick={this.handleClick} > Click me! </button>
+			<p onMouseOver={this.handleMouseOver}> Mouse Over </p>
+			<h3 onCopy={this.handleCopy}> Try Copying Me!</h3>
+			</div>
+			)
+				
+		}
+	}
+	
+	ReactDOM.render(<App />, document.getElementById('app'));
+</script>
+</body>
+</html>
